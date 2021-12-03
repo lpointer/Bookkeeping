@@ -39,7 +39,7 @@
     "useCompilerPlugins": false,
     "minifyWXML": true
   },
-  "appid": "xxx",
+  "appid": "xxx", 
   "projectname": "%E7%8C%AA%E7%8C%AA%E8%AE%B0",
   "libVersion": "2.2.5",
   "simulatorType": "wechat",
