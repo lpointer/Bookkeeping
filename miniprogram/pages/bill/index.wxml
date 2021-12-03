@@ -1,0 +1,55 @@
+<view class='container' wx:if="{{notData}}">
+  <view class='top'>
+    <view class='list'>
+      <view class='tip'>选择日期/类型</view>
+      <view class='btn date'>
+        <label class="{{sele.year? 'seleData':''}}" bindtap='bindYearBtn'>{{year}}</label>
+        <label class="{{sele.month? 'seleData':''}}" bindtap='bindMonthBtn'>{{month}}</label>
+        <label class="{{sele.day? 'seleData':''}}" bindtap='bindTodayBtn'>{{today}}</label>
+        <label class="{{sele.consumption? 'seleData':''}} consumption-offset" bindtap='bindConsumptionBtn'>
+          支出
+        </label>
+        <label class="{{sele.income? 'seleData':''}}" bindtap='bindIncomeBtn'>收入</label>
+      </view>
+      <view class='btn time'>
+        <text bindtap='bindSelectDate' wx:for="{{selectArray.arr}}" data-type="{{selectArray.type}}" data-date="{{item}}" class="{{item == selectIndex ? 'seleData':''}}" wx:key="{{index}}">
+          {{item}}
+        </text>
+      </view>
+      <view class='btn detail'>
+        <label class='consumption-offset'>收入：</label>
+        <label class='incomeSty'>￥{{moneyIncome}}</label>
+        <label class='consumption-offset'>支出：</label>
+        <label class='consumptionSty'>￥{{moneyConsumption}}</label>
+      </view>
+    </view>
+  </view>
+  <view class='body'>
+    <view wx:for="{{dataList}}" wx:key="index">
+      <!-- <view class='tip' wx:if="{{item.monthDate != ''}}">{{item.monthDate}}</view> -->
+      <view wx:if="{{!item.isSameTime}}" class='tip'>{{item.date}}</view>
+      <i-swipeout data-id="{{item._id}}" data-index="{{index}}" data-money="{{item.money}}" data-type="{{item.type}}" data-menuid="{{item.iconData.id}}" toggle="{{toggle}}" i-class="i-swipeout-demo-item" bind:change="clickSwipeoutMenu" actions="{{actions}}" bind:long="handlerCloseButton">
+        <view slot="content">
+          <i-cell-group>
+            <i-cell label="{{item.remarks}}" title="{{item.iconData.name}}" fontColor="{{item.type}}" value="￥{{item.money}}">
+              <view slot="icon">
+                <image class='iconfont {{item.iconData.icon}} icon-default-size icon-default-color list_image'></image>
+              </view>
+            </i-cell>
+          </i-cell-group>
+        </view>
+      </i-swipeout>
+    </view>
+    <view wx:if="{{dataList.length == 0 }}" style="text-align: center;margin-top:30%;">
+      <view>{{prompt}}无支出/收入</view>
+      <view>每一笔记录都属于你的点点滴滴</view>
+    </view>
+    <i-divider wx:if="{{todayData.length > 5}}" color="#2d8cf0" lineColor="#2d8cf0">
+      停！我也是有底线的
+    </i-divider>
+  </view>
+</view>
+<view wx:else style="text-align: center;margin-top:30%;">
+  <!-- <image src='../../images/home1.png'></image> -->
+  这里空空如也，你很勤俭哦，给你赞一个。
+</view>

@@ -1,0 +1,88 @@
+<view class='viewTop'>
+  <view class='circle'>
+    <i-row>
+      <i-col span="12" class="{{money.moneyConsumption < 999?'incomeFonts':'incomeFont'}}" i-class="col-class">
+        <text class='text'>
+          月支出:
+          <label></label>
+          <text class='consumptionSty'>{{money.moneyConsumption}}</text>
+          ￥
+        </text>
+        <text class='text'>
+          月收入:
+          <label></label>
+          <text class='incomeSty'>{{money.moneyIncome}}</text>
+          ￥
+        </text>
+      </i-col>
+      <i-col span="12" class='consumptionFont' i-class="col-class">
+        <text class='text'>
+          日支出:
+          <label></label>
+          <text class='consumptionSty'>{{money.todayConsumption}}</text>
+          ￥
+        </text>
+        <text class='text'>
+          日收入:
+          <label></label>
+          <text class='incomeSty'>{{money.todayIncome}}</text>
+          ￥
+        </text>
+      </i-col>
+      <i-col span="24" class='userInfoFont' i-class="col-class">
+        <image class='user-img' src='{{avatarUrl}}'></image>
+        <view class='user-name'>{{username}}</view>
+        <!-- <view class='budgetSet'>
+          <view wx:if="{{money.budget}}" class='text'>
+            <text class='text'>预算剩余:</text>
+            <text class="{{money.beyond?'budgetSty':'budgetSty1'}}">{{money.todayConsumption}}</text>￥
+          </view>
+          <view wx:else>
+            <text class='text'>设置预算 </text>
+            <i-icon type="setup_fill" size="20" />
+          </view>
+        </view> -->
+      </i-col>
+    </i-row>
+  </view>
+</view>
+<view class="{{!switchs.dataList?'addBtn_top':''}}">
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" type="primary">
+    <text space="ensp">记 一 笔</text>
+  </button>
+  <view wx:else>请升级微信版本</view>
+</view>
+<view wx:if="{{switchs.dataList}}" class='init' animation="{{slide_up}}">
+  <text class='tip'>{{todayDate}}</text>
+  <i-swipeout wx:for="{{todayData}}" data-id="{{item._id}}" data-money="{{item.money}}" data-type="{{item.type}}" data-menuid="{{item.iconData.id}}" wx:key="index" toggle="{{toggle}}" i-class="i-swipeout-demo-item" bind:change="clickSwipeoutMenu" actions="{{actions}}" bind:long="handlerCloseButton">
+    <view slot="content">
+      <i-cell-group>
+        <i-cell label="{{item.remarks}}" title="{{item.iconData.name}}" fontColor="{{item.type}}" value="￥{{item.money}}">
+          <view slot="icon">
+            <image class='iconfont {{item.iconData.icon}} icon-default-size icon-default-color list_image'></image>
+          </view>
+        </i-cell>
+      </i-cell-group>
+    </view>
+  </i-swipeout>
+  <i-divider wx:if="{{todayData.length > 5}}" color="#2d8cf0" lineColor="#2d8cf0">
+    停！！我的底线到啦
+  </i-divider>
+</view>
+<view wx:else style="text-align: center;margin-top:15%;">
+  <!-- <image src='../../images/home1.png'></image> -->
+  <label>记一笔，点点滴滴累积起来</label>
+  <view wx:if="{{addRecordTotal !== 0}}" class='addrecord'>本月已经记录{{addRecordTotal}}天了，继续加油</view>
+  <!-- <view>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="bill">
+  <text space="ensp">查看账单</text>
+ </button>
+ </view>
+  - -->
+</view>
+<!-- 提示修改删除操作 -->
+<view class='mask' bindtap='cloneMask' wx:if="{{authorization}}"></view>
+<view wx:if="{{authorization}}" class='authorization'>
+  <view>长按列表或者滑动列表即可修改与删除</view>
+  <view bindtap='ok'>我知道了</view>
+</view>

@@ -1,0 +1,53 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+button[type='primary'] {
+  border-radius: 40px;
+  color: #000;
+  /* background:#2d8cf0; */
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: linear-gradient(360deg, #56cdf1, #79afff);
+  white-space: nowrap;
+  user-select: none;
+  font-size: 14px;
+  border: 0 !important;
+  position: relative;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
+  margin: 10px;
+
+}
+
+button[type='primary']:active {
+  background: #5fa4ee !important;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100000;
+  left: 0;
+  top: 0;
+  background: #04030f !important;
+  opacity: 0.3 !important;
+}
+
+/* 支出字体颜色 */
+.consumptionSty {
+  color: rgb(221, 61, 61);
+}
+
+/* 收入字体颜色 */
+.incomeSty {
+  color: yellow;
+}

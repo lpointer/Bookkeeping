@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/addMoney/index",
+    "pages/bill/index",
+    "pages/user/index",
+    "pages/suggestFeedback/index",
+    "pages/sfInfo/index"
+  ],
+  "window": {
+    "backgroundColor": "#000",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#79afff",
+    "navigationBarTitleText": "猪猪记",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#79afff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "点滴",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
+}

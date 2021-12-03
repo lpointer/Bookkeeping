@@ -1,0 +1,81 @@
+@import "../../style/icon.wxss";
+
+page {
+  background-image: linear-gradient(360deg, #fff, #3eecf2);
+  height: 100%;
+}
+
+.top {
+  width: 100%;
+  height: 280rpx;
+  background-image: linear-gradient(0deg, #58eff4, #79afff);
+  z-index: 999;
+}
+
+.body {
+  width: 100%;
+  height: 70%;
+  z-index: 1000;
+  margin-top: -20%;
+}
+
+.card {
+  width: 80%;
+  height: 80%;
+  box-shadow: 0px 5px 0px #f5f8f7, 0px 5px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  background-color: #f5f8f7;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.user {
+  /* transform:rotate(5deg);   */
+  /* margin-top:-130rpx; */
+  z-index: 1001;
+  margin-bottom: 70rpx;
+}
+
+.list {
+  /* transform:rotate(-3deg); */
+  margin-top: 40rpx;
+  margin-left: 5%;
+  background-color: #fff;
+  /* box-shadow:0px 5px 0px #fff, 0px 5px 10px rgba(0, 0, 0, 0.5); */
+  box-shadow: 0px 0px 10px 0px #e4e4e4;
+  width: 90%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 15rpx;
+  font-size: 30rpx;
+}
+
+.user-img {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 80rpx;
+  border: 1px solid #6cc9fb;
+  box-shadow: 0px 0px 10px 0px #6cc9fb;
+  margin-top: -60rpx;
+  z-index: 1002;
+}
+
+.user-name {
+  font-size: 34rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* margin-top: -40rpx; */
+}
+
+.authorization {
+  width: 80%;
+  height: 250rpx;
+  box-shadow: 0px 5px 0px #f5f8f7, 0px 5px 10px rgba(158, 59, 59, 0.5);
+  background-color: #f5f8f7;
+  border-radius: 20rpx;
+  text-align: center;
+  z-index: 100000;
+  line-height: 100rpx;
+  margin-top: -60%;
+}

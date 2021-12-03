@@ -1,0 +1,39 @@
+<view class='container'>
+  <view class='top'></view>
+  <view class='body'>
+    <view class='card'>
+      <view class='card-head'>感谢你的信任</view>
+      <view class='card-body'>
+        <view class='shadow list-radio'>
+          <view class='title'>
+            <view>请选择</view>
+          </view>
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{radioItem}}" wx:key="{{item.id}}">
+              <radio class="radio" value="{{item.name}}" checked="{{item.checked}}" />
+              {{item.name}}
+            </label>
+          </radio-group>
+        </view>
+        <view class='shadow content'>
+          <view class='title'>
+            <view>你的{{type}}</view>
+          </view>
+          <textarea placeholder-class='textarea-content' placeholder='在这里描述，感谢你提出宝贵的{{type}}，我以最快速度处理。' bindblur='content' value='{{contentVal}}'></textarea>
+        </view>
+        <view class='shadow content'>
+          <view class='title'>
+            <view>联系方式(选填)</view>
+          </view>
+          <input bindblur='contactInfo' value='{{contactInfoVal}}' class='contact-info' placeholder='微信/手机号'></input>
+        </view>
+        <view class='footer'>
+          <button bindtap='add' class='footer-save' type="primary">
+            <text space="ensp">确  认</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='footer'></view>
+</view>

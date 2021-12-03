@@ -1,0 +1,134 @@
+@import "../../style/icon.wxss";
+
+.budgetSty {
+  color: #79afff;
+  font-size: 24rpx;
+}
+
+.budgetSty1 {
+  color: #b90000;
+  font-size: 24rpx;
+}
+
+.tip {
+  color: #666566;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.list_image {
+  width: 80rpx;
+  height: 75rpx;
+}
+
+.circle {
+  width: 100%;
+  height: 9rem;
+  border: 0px solid #79afff;
+  border-radius: 0 0 70% 70%/0 0 110% 110%;
+  border-top: none;
+  background-image: linear-gradient(360deg, #61daff, #79afff);
+}
+
+.user-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 80rpx;
+  border: 1px solid #f5f8f7;
+  box-shadow: 0px 0px 10px 0px #f5f8f7;
+}
+
+.user-name {
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text {
+  font-size: 28rpx;
+  color: rgba(44, 44, 48, 0.9);
+  /*393a3b,rgb(8, 13, 251)*/
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.col {
+  box-sizing: border-box;
+  float: right;
+  width: 100%;
+}
+
+.md-6 {
+  width: 25%;
+  display: block;
+  word-wrap: break-word;
+}
+
+.md-12 {
+  width: 50%;
+  display: block;
+}
+
+.incomeFont>view {
+  padding-left: 12%;
+}
+
+.incomeFonts>view {
+  padding-left: 17%;
+}
+
+.consumptionFont>view {
+  padding-left: 12%;
+}
+
+.userInfoFont>view {
+  text-align: center;
+  margin-top: -20rpx;
+}
+
+.budgetSet {
+  /* margin-top: 25rpx; */
+}
+
+.addBtn_top {
+  margin-top: 150rpx;
+}
+
+.authorization {
+  width: 80%;
+  height: 180rpx;
+  box-shadow: 0px 5px 0px #f5f8f7, 0px 5px 10px rgba(158, 59, 59, 0.5);
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  text-align: center;
+  z-index: 1000000;
+  line-height: 100rpx;
+  margin-left: 12%;
+  margin-top: -45%;
+  position: relative;
+}
+
+.authorization view {
+  font-size: 28rpx;
+}
+
+.bill {
+  background-color: #fff;
+  background-image: #fff;
+}
+
+.init {
+  opacity: 0;
+  margin-top: 200px;
+}
+
+.addrecord {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #79afff;
+}

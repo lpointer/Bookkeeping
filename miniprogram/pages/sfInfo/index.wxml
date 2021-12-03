@@ -1,0 +1,46 @@
+<view class='container'>
+  <view class='body'>
+    <view class='card' wx:for="{{dataList}}" wx:key="index">
+      <view class='list'>
+        <view>反馈类型：{{item.type}}</view>
+        <view>
+          反馈内容
+          <view>{{item.content}}</view>
+        </view>
+        <view>联系方式：{{item.contactInfo}}</view>
+        <view>反馈时间：{{m1.format(item.time) }}</view>
+        <view>
+          设备信息
+          <view wx:if="{{item.dev}}">
+            <view>设备名称： {{item.dev.brand}}</view>
+            <view>设备类型： {{item.dev.model}}</view>
+            <view>系统版本： {{item.dev.system}}</view>
+            <view>设备系统： {{item.dev.platform}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='footer'></view>
+  <!-- 授权弹出层 -->
+  <view class='mask' bindtap='cloneMask' wx:if="{{authorization}}"></view>
+  <view wx:if="{{authorization}}" class='authorization'>
+    <view style="font-size: 35rpx;">请确认授权</view>
+    <view>
+      <button type='primary' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        授权
+      </button>
+      <view wx:else>请升级微信版本</view>
+    </view>
+  </view>
+</view>
+<wxs module="m1">
+  function format(ts) {
+    var d = getDate(ts)
+    return [d.getFullYear(), d.getMonth()+1, d.getDate()].join('-')
+      + ' '
+      + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':')
+  }
+
+  module.exports.format = format
+</wxs>

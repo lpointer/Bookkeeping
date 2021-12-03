@@ -1,0 +1,50 @@
+<i-tabs current="{{ current }}" bindchange="handleChange">
+  <i-tab key="0" title="支出"></i-tab>
+  <i-tab key="1" title="收入"></i-tab>
+</i-tabs>
+<form bindsubmit='searchBox'>
+  <view wx:if="{{ current == '0'}}">
+    <i-panel title="输入金额">
+      <i-input bindfocus='expenditureFocus' bindblur='expenditureBlur' autofocus="{{expenditureAutoFocus}}" bind:change="expenditureMoneyInput" type="text" title="金额" value="{{expenditureMoney}}" />
+    </i-panel>
+    <i-grid wx:key="id" wx:for="{{expenditure}}" wx:for-index="id" wx:for-item="parentItem">
+      <i-grid-item key="index" wx:for="{{parentItem.expenditureData}}" wx:key="index" class="{{isSele==item.id?'redbackgroun':'unredbackgroun'}} i-grid-item" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+        <i-grid-icon data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+          <image class="iconfont {{item.icon}} icon-default-size icon-default-color" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun" />
+        </i-grid-icon>
+        <i-grid-label data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+          {{item.name}}
+        </i-grid-label>
+      </i-grid-item>
+    </i-grid>
+  </view>
+  <view wx:else>
+    <i-panel title="输入金额">
+      <i-input bindfocus='incomeFocus' bindblur='incomeBlur' autofocus="{{incomeAutoFocus}}" bind:change="incomeMoneyInput" type="text" title="金额" value="{{incomeMoney}}" />
+    </i-panel>
+    <i-grid wx:key="id" wx:for="{{income}}" wx:for-index="id" wx:for-item="parentItem">
+      <i-grid-item key="index" wx:for="{{parentItem.incomeData}}" wx:key="index" class="{{isSele==item.id?'redbackgroun':'unredbackgroun'}}" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+        <i-grid-icon data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+          <image class="iconfont {{item.icon}} icon-default-size icon-default-color" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun" />
+        </i-grid-icon>
+        <i-grid-label data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
+          {{item.name}}
+        </i-grid-label>
+      </i-grid-item>
+    </i-grid>
+  </view>
+  <view style='margin-top:30rpx'>
+    <i-panel>
+      <view class='sele-date'>
+        <text class="date_text">{{date}}</text>
+        <picker class='date_picker' mode="date" value="{{seledate}}" start="2018-01-01" end="{{date}}" bindchange="bindDateChange">
+          <button type='date'>{{seledate}}</button>
+        </picker>
+      </view>
+      <i-input bind:change="remarksInput" title="备注" bindfocus='remarksFocus' value="{{current == 0 ? expenditureRemarks : incomeRemarks}}" />
+      <button bindtap='add' type="primary">
+        <text space="ensp">确  认</text>
+      </button>
+    </i-panel>
+  </view>
+</form>
