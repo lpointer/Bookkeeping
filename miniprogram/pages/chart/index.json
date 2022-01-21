@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-button": "../../../dist/button/index",
+    "i-row": "../../../dist/row/index",
+    "i-col": "../../../dist/col/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-cell-group": "../../../dist/cell-group/index",
+    "i-cell": "../../../dist/cell/index",
+    "i-swipeout": "../../../dist/swipeout/index",
+    "i-divider": "../../../dist/divider/index"
+  }
+}

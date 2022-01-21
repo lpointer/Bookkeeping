@@ -5,7 +5,8 @@
     "pages/bill/index",
     "pages/user/index",
     "pages/suggestFeedback/index",
-    "pages/sfInfo/index"
+    "pages/sfInfo/index",
+    "pages/chart/index"
   ],
   "window": {
     "backgroundColor": "#000",
@@ -22,6 +23,12 @@
         "text": "点滴",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/chart/index",
+        "text": "报表",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user.png"
       },
       {
         "pagePath": "pages/user/index",
