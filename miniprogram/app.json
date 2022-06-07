@@ -26,7 +26,7 @@
       },
       {
         "pagePath": "pages/chart/index",
-        "text": "报表",
+        "text": "图标",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user.png"
       },
