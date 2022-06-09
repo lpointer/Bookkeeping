@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "qiun-wx-ucharts": "/components/qiun-wx-ucharts/index"
+    "qiun-wx-ucharts": "/components/qiun-wx-ucharts/index",
+    "i-tag": "../../dist/tag/index",
+    "i-toast": "../../dist/toast/index"
   }
 }

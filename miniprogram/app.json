@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/chart/index",
     "pages/index/index",
     "pages/addMoney/index",
     "pages/bill/index",
     "pages/user/index",
     "pages/suggestFeedback/index",
-    "pages/sfInfo/index",
-    "pages/chart/index"
+    "pages/sfInfo/index"
   ],
   "window": {
     "backgroundColor": "#000",
@@ -19,16 +19,16 @@
     "selectedColor": "#79afff",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "点滴",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home.png"
-      },
-      {
         "pagePath": "pages/chart/index",
         "text": "图标",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "点滴",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
       },
       {
         "pagePath": "pages/user/index",

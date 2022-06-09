@@ -1,7 +1,32 @@
 <view class="charts-box">
+  <view class='top'>
+    <view class='list'>
+      <view class='btn date'>
+        <label class="{{sele.year? 'seleData':''}}" bindtap='bindYearBtn'>{{year}}</label>
+        <label class="{{sele.month? 'seleData':''}}" bindtap='bindMonthBtn'>{{month}}</label>
+        <label class="{{sele.day? 'seleData':''}}" bindtap='bindTodayBtn'>{{today}}</label>
+        <label class="{{sele.consumption? 'seleData':''}} consumption-offset" bindtap='bindConsumptionBtn'>
+          支出
+        </label>
+        <label class="{{sele.income? 'seleData':''}}" bindtap='bindIncomeBtn'>收入</label>
+      </view>
+      <view class='btn time'>
+        <text bindtap='bindSelectDate' wx:for="{{selectArray.arr}}" data-type="{{selectArray.type}}" data-date="{{item}}" class="{{item == selectIndex ? 'seleData':''}}" wx:key="{{index}}">
+          {{item}}
+        </text>
+      </view>
+    </view>
+  </view>
   <qiun-wx-ucharts 
     type="line"
-    opts="{{opts}}"
-    chartData="{{chartData}}"
+    opts="{{lineOpts}}"
+    chartData="{{lineData}}"  />
+    <qiun-wx-ucharts 
+    type="pie"
+    opts="{{pieOpts}}"
+    chartData="{{pieData}}"
   />
+
+  
+  <i-toast id="toast" />
 </view>

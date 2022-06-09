@@ -1,4 +1,110 @@
-.charts-box {
+
+@import "../../style/icon.wxss";
+
+page, body {
+  background-image: linear-gradient(360deg, #fff, #79afff);
+  height: 100%;
+}
+
+.top {
   width: 100%;
-  height: 300px;
+  height: 100rpx;
+  /* background-image: linear-gradient(0deg,#58eff4,#79afff); */
+  z-index: 999;
+  margin-bottom: 35rpx;
+}
+
+/* 时间 */
+.date {
+  width: 100%;
+  height: 80rpx;
+}
+
+.date label {
+  width: 13%;
+  height: 40%;
+  line-height: 40%;
+  border-radius: 10rpx;
+  float: left;
+  text-align: center;
+  padding-top: 20rpx;
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  background-color: #f5f8f7;
+}
+
+/* 消费按钮偏移 */
+.consumption-offset {
+  margin-left: 12% !important;
+}
+
+/* 天日期 */
+.time {
+  width: 100%;
+  overflow: scroll;
+  line-height: 11px;
+  height: 40px;
+  display: flex;
+}
+
+.time text {
+  padding: 1% 2.5% 0 2.5%;
+  text-align: center;
+}
+
+.seleData {
+  border-bottom: 8rpx solid #79afff;
+  box-shadow: 0px 0px 10px 2px #ccc;
+}
+
+.body {
+  margin-top: 20%;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.list_image {
+  width: 80rpx;
+  height: 75rpx;
+}
+
+.card {
+  width: 80%;
+  height: 65%;
+  box-shadow: 0px 5px 0px #f5f8f7, 0px 5px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  background-color: #f5f8f7;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.list {
+  /* transform:rotate(-3deg); */
+  margin-left: 5%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px #e4e4e4;
+  width: 90%;
+  border-radius: 15rpx;
+  font-size: 30rpx;
+}
+
+.tip {
+  color: #000;
+  font-size: 30rpx;
+  margin-left: 3%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.detail {
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  margin-left: 3%;
+}
+
+/* 收入字体颜色 */
+.incomeSty {
+  color: #19da19;
 }
