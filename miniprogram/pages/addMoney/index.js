@@ -25,6 +25,7 @@ Page({
     type: 'add',//默认是添加类型
     saveData: {
       date: _date.todayDate,
+      year: _date.FullYear,
       monthDate: _date.monthDate,
       type: 0,  //0消费/1收入
       money: '',
@@ -248,14 +249,6 @@ Page({
     }
 
     app.getToday = true;
-    //添加到月数据列表
-    methods.getMonthDataList({
-      desc: 'cerateTime',
-      condition: {
-        openid: app.globalData.openid,
-        monthDate: _date.monthDate
-      }
-    }, that.saveGlobalData);
 
   },
   //保存全局数据
@@ -383,7 +376,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //页面关闭刷新数据
+    methods.getMonthDataList({
+      desc: 'cerateTime',
+      condition: {
+        openid: app.globalData.openid,
+        monthDate: _date.monthDate
+      }
+    }, this.saveGlobalData);
   },
 
   /**
