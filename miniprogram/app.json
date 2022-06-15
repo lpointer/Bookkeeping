@@ -20,13 +20,13 @@
     "list": [
       {
         "pagePath": "pages/chart/index",
-        "text": "图标",
+        "text": "报表",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "点滴",
+        "text": "加一笔",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home.png"
       },
