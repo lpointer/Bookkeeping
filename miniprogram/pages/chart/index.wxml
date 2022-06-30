@@ -4,7 +4,7 @@
       <view class='btn date'>
         <label class="{{sele.year? 'select_data':''}}" bindtap='bindYearBtn'>{{year}}</label>
         <label class="{{sele.month? 'select_data':''}}" bindtap='bindMonthBtn'>{{month}}</label>
-        <label class="{{sele.day? 'select_data':''}}" bindtap='bindTodayBtn'>{{today}}</label>
+        <label class="{{sele.day? 'select_data':''}}" bindtap='bindTodayBtn' style="display:none;">{{today}}</label>
         <label class="{{sele.consumption? 'select_data':''}} consumption-offset" bindtap='bindConsumptionBtn'>
           支出
         </label>
@@ -20,11 +20,12 @@
       </view>
     </view>
   </view>
-  <qiun-wx-ucharts 
+  <qiun-wx-ucharts
+  class="ssssss"
     type="line"
     opts="{{lineOpts}}"
     chartData="{{lineData}}"  />
-    <qiun-wx-ucharts 
+  <qiun-wx-ucharts 
     type="pie"
     opts="{{pieOpts}}"
     chartData="{{pieData}}"

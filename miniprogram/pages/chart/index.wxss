@@ -8,10 +8,9 @@ page, body {
 
 .top {
   width: 100%;
-  height: 100rpx;
+  /* height: 100rpx; */
   /* background-image: linear-gradient(0deg,#58eff4,#79afff); */
   z-index: 999;
-  margin-bottom: 35rpx;
 }
 
 /* 时间 */
@@ -94,6 +93,7 @@ page, body {
   width: 90%;
   border-radius: 15rpx;
   font-size: 30rpx;
+  margin-bottom: 5%;
 }
 
 .tip {
