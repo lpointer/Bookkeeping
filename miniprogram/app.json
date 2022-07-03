@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/chart/index",
     "pages/index/index",
+    "pages/chart/index",
     "pages/addMoney/index",
     "pages/bill/index",
     "pages/user/index",
@@ -20,21 +20,21 @@
     "list": [
       {
         "pagePath": "pages/chart/index",
-        "text": "报表",
-        "iconPath": "images/user.png",
-        "selectedIconPath": "images/user.png"
+        "text": "统计",
+        "iconPath": "images/chart.png",
+        "selectedIconPath": "images/chart.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "加一笔",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home.png"
+        "text": "明细",
+        "iconPath": "images/detail.png",
+        "selectedIconPath": "images/detail.png"
       },
       {
         "pagePath": "pages/user/index",
         "text": "我",
-        "iconPath": "images/user.png",
-        "selectedIconPath": "images/user.png"
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my.png"
       }
     ]
   },

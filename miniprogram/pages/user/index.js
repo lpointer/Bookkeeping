@@ -1,4 +1,5 @@
 // miniprogram/pages/user/index.js
+const { db, dbTable, getDataList } = require('../../services/api')
 Page({
 
   /**
@@ -9,11 +10,11 @@ Page({
   },
   data: {
     isAdmin: false,
-    avatarUrl: '',
-    username: '匿名者',
+    avatarUrl: '../../images/default_avatar.png',
+    username: '认真生活',
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     authorization: false,
-
+    friendlyTips: "你好哇，很高兴你能打开并使用我，坚持是一件长久的事。\n如果你有好想法或哪里用得不好，请你一定要在建议与反馈给我留言"
   },
 
   /**
@@ -27,8 +28,6 @@ Page({
       wx.setStorageSync('RedDot', 1)
       wx.hideTabBarRedDot({ index: 2 })
     }
-
-
 
   },
   //建议与反馈
@@ -57,19 +56,47 @@ Page({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
+          wx.getUserProfile({
+            desc: '仅用于显示您的昵称和头像',
             success: res => {
-              that._data.authorization = true;
+              that._data.authorization = true
               that.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 username: res.userInfo.nickName
               })
+              wx.setStorageSync('userInfo', JSON.stringify(res.userInfo))
             }
           })
+
         } else {
           //如果没有授权，点击我的账单则需要提示授权
           // that.setData({ authorization: true })
         }
+      }
+    })
+  },
+
+  getUserInfo() {
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      const userInfoCache = JSON.parse(userInfo)
+      this._data.authorization = true
+      this.setData({
+        avatarUrl: userInfoCache.avatarUrl,
+        username: userInfoCache.nickName
+      })
+    }
+  },
+
+  getFriendlyTips() {
+    const option = {
+      db: dbTable.tips,
+      condition: { type: "friendlyTips" },
+    }
+    getDataList(option, data => {
+      if(data.length){
+        const tip = data[0].tips
+        this.setData({ friendlyTips: tip })
       }
     })
   },
@@ -90,26 +117,9 @@ Page({
     wx.setBackgroundColor({
       backgroundColor: '#ffffff', // 窗口的背景色为白色
     })
-    const that = this;
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              that._data.authorization = true;
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                username: res.userInfo.nickName
-              })
-            }
-          })
-        } else {
-          //如果没有授权，点击我的账单则需要提示授权
-        }
-      }
-    })
+    this.getUserInfo()
+    this.getFriendlyTips()
   },
 
   /**

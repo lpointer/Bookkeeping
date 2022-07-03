@@ -14,13 +14,15 @@
       <view bindtap='bindSfInfo' wx:if="{{isAdmin}}" class='list my-bill'>查看反馈信息</view>
     </view>
   </view>
-  <view class='footer'></view>
+  <view class='footer'>
+    <view class="ps">{{friendlyTips}}</view>
+  </view>
   <!-- 授权弹出层 -->
   <view class='mask' bindtap='cloneMask' wx:if="{{authorization}}"></view>
   <view wx:if="{{authorization}}" class='authorization'>
     <view style="font-size: 35rpx;">请确认授权</view>
     <view>
-      <button type='primary' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+      <button type='primary' wx:if="{{canIUse}}" bindtap="bindGetUserInfo">
         授权
       </button>
       <view wx:else>请升级微信版本</view>

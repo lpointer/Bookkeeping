@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "猪猪记",
+  "navigationBarTitleText": "点滴记账",
   "enablePullDownRefresh": true,
   "backgroundColor": "#79afff",
   "usingComponents": {

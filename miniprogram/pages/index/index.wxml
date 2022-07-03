@@ -3,13 +3,13 @@
     <i-row>
       <i-col span="12" class="{{money.moneyConsumption < 999?'incomeFonts':'incomeFont'}}" i-class="col-class">
         <text class='text'>
-          月支出:
+          月支出
           <label></label>
           <text class='consumptionSty'>{{money.moneyConsumption}}</text>
           ￥
         </text>
         <text class='text'>
-          月收入:
+          月收入
           <label></label>
           <text class='incomeSty'>{{money.moneyIncome}}</text>
           ￥
@@ -17,13 +17,13 @@
       </i-col>
       <i-col span="12" class='consumptionFont' i-class="col-class">
         <text class='text'>
-          日支出:
+          日支出
           <label></label>
           <text class='consumptionSty'>{{money.todayConsumption}}</text>
           ￥
         </text>
         <text class='text'>
-          日收入:
+          日收入
           <label></label>
           <text class='incomeSty'>{{money.todayIncome}}</text>
           ￥

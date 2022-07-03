@@ -18,8 +18,8 @@ Page({
       { name: '删除', color: '#000', width: 100, color: '#80848f', fontsize: '20', icon: 'delete' }
     ],
     toggle: false,
-    avatarUrl: '',
-    username: '匿名',
+    avatarUrl: '../../images/default_avatar.png',
+    username: '认真生活',
     addRecordTotal: 0,
     money: {
       show: false,
@@ -123,19 +123,13 @@ Page({
     //getUserInfo:fail auth deny  不授权
     //e.detail.userInfo 用户信息
     //用户不授权，直接跳转
-    const that = this;
+    const that = this
     if (e.detail.errMsg.includes('ok')) {
-      const obj = JSON.parse(e.detail.rawData);
-      this.setData({
-        avatarUrl: obj.avatarUrl,
-        username: obj.nickName,
-        userInfo: obj
-      })
       //获取用户表是否已经添加数据
       if (app.isUser) {
         wx.navigateTo({ url: '../addMoney/index' })
       } else {
-        addData({ 'db': dbTable.user, 'saveData': { user: e.detail.userInfo, dev: methods.getUserDev(), shareID: that._data.share } }, function (flag) {
+        addData({ 'db': dbTable.user, 'saveData': { createDate: _date.todayDate, user: e.detail.userInfo, dev: methods.getUserDev(), shareID: that._data.share } }, function (flag) {
           if (flag) app.isUser = true
           wx.navigateTo({ url: '../addMoney/index' })
         })
@@ -338,35 +332,32 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '我发现一个很有用记账小程序，一点点记录生活，对你很有帮助',
+      title: '我发现一个很有用记账小程序，一点一滴记录生活，希望对你有帮助',
       path: 'pages/index/index?shareID=' + wx.getStorageSync('uopenid')
     }
   },
+
+  getUserInfo() {
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      const userInfoCache = JSON.parse(userInfo)
+      this._data.authorization = false
+      this.setData({
+        authorization: false,
+        avatarUrl: userInfoCache.avatarUrl,
+        username: userInfoCache.nickName,
+        userInfo: userInfoCache
+      })
+    }
+  },
+
   onLoad: function (options) {
 
     if (options.shareID) this._data.share = options.shareID
     // this.onGetOpenid("load")
     // 显示红点
     if (!wx.getStorageSync('RedDot')) wx.showTabBarRedDot({ index: 2 })
-    this.getAddTotal();
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                username: res.userInfo.nickName,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
-    })
-
+    this.getAddTotal()
   },
   onReady: function () {
 
@@ -392,6 +383,7 @@ Page({
       }
     }, 2000)
     this.slideupshow(this, 'slide_up', -200, 1);
+    this.getUserInfo()
   },
   //下拉刷新
   onPullDownRefresh: function () {

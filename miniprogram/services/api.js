@@ -5,7 +5,7 @@ const jwdb = wx.cloud.database({
 })
 const jzdb = wx.cloud.database({
   config: {
-    env: 'jizhang-519e30'
+    env: 'yiqiju-8541ed'
   }
 })
 const db = wx.cloud.database();
@@ -16,7 +16,8 @@ const dbTable = {
   user: 'BaseUser',        //用户信息
   errMsg: 'ErrorMessage',   //错误信息
   record: 'AddRecord',     //添加记录
-  sf: 'SuggestFeedback'    //建议与反馈
+  sf: 'SuggestFeedback',    //建议与反馈
+  tips: 'tips'
 }
 module.exports = {
   jwdb,

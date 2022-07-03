@@ -43,6 +43,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 12px;
 }
 
 .text {
@@ -80,10 +81,12 @@
 
 .incomeFonts>view {
   padding-left: 17%;
+  margin-top: -15px;
 }
 
 .consumptionFont>view {
   padding-left: 12%;
+  margin-top: -15px;
 }
 
 .userInfoFont>view {
