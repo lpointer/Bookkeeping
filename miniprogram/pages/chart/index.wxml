@@ -21,11 +21,12 @@
     </view>
   </view>
   <qiun-wx-ucharts
-  class="ssssss"
+    :canvas2d="true"
     type="line"
     opts="{{lineOpts}}"
     chartData="{{lineData}}"  />
   <qiun-wx-ucharts 
+    :canvas2d="true"
     type="pie"
     opts="{{pieOpts}}"
     chartData="{{pieData}}"

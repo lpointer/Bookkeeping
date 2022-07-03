@@ -94,10 +94,6 @@
   margin-top: -20rpx;
 }
 
-.budgetSet {
-  /* margin-top: 25rpx; */
-}
-
 .addBtn_top {
   margin-top: 150rpx;
 }

@@ -19,16 +19,6 @@ App({
     this.isUser = false;    //是否已经保存用户数据
     this.isTodayAdd = false;//今天是否已经添加数据
 
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-
-        }
-      }
-    })
-
   },
   updateV() {
     const updateManager = wx.getUpdateManager()

@@ -34,23 +34,6 @@ module.exports = {
       console.log(err)
     })
 
-    //正在加载load...
-    // db.collection(dbTable.cb)
-    // .where(options.condition)
-    // .orderBy(options.desc, 'desc')
-    // .get()
-    // .then(res => {      
-    //   //不知道为什么第二次onshow查询不到数据
-    //   if (res.data.length == 20) {
-    //     that.skipQueryMonth(options, fn)
-    //     that._data.list = res.data;
-    //   } else {
-    //     that._data.list = res.data;
-    //     if (typeof fn === 'function') fn(that._data.list)        
-    //   }
-
-    // })
-
   },
   /**
    * 获取当月全部数据，由于getMonthDataList只能获取20条数据，所以使用本方法不断递归获取本月全部数据保存到

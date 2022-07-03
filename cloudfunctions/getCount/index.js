@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   // 先取出集合记录总数
-  const countResult = await db.collection(dbTable).count()
+  const countResult = await db.collection(dbTable).where({ openid: condition.openid }).count()
   const total = countResult.total
   // 计算需分几次取
   const batchTimes = Math.ceil(total / 100)

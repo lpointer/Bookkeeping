@@ -207,6 +207,10 @@ Page({
 
   //获取本月总添加记录
   getAddTotal() {
+    let openid = app.globalData.openid
+    if(!openid){
+      openid = wx.getStorageSync('uopenid')
+    }
     wx.cloud.callFunction({
       name: 'getCount',
       data: {
