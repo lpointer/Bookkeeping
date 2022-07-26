@@ -11,6 +11,7 @@
     "i-row": "../../dist/row/index",
     "i-col": "../../dist/col/index",
     "i-button": "../../dist/button/index",
-    "i-tag": "../../dist/tag/index"
+    "i-tag": "../../dist/tag/index",
+    "money-input": "../../dist/money-input/index"
   }
 }

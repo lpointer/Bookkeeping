@@ -13,6 +13,7 @@ Page({
     BillID: ''
   },
   data: {
+    KeyboardKeys: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '·'],
     seledate: '选择时间',
     current: '0',
     isSele: '',
@@ -91,14 +92,18 @@ Page({
       }
     ],
     expenditureAutoFocus: false,
-    incomeAutoFocus: false
+    incomeAutoFocus: false,
+    keyShow: false
   },
   expenditureFocus(e) {
+    let expend = e.detail.detail.value
     if (e.detail.detail.value == "￥0.00" || e.detail.detail.value == "可以试试10+15+20哦") {
-      this.setData({
-        expenditureMoney: ""
-      })
+      expend = ""
     }
+    this.setData({
+      expenditureMoney: expend,
+      keyShow: !this.data.keyShow
+    })
   },
   remarksFocus(e) {
     if (e.detail.detail.value == "输入备注") {
@@ -107,6 +112,9 @@ Page({
         incomeRemarks: ""
       })
     }
+    this.setData({
+      keyShow: false
+    })
   },
   expenditureBlur(e) {
     let result = "";
@@ -139,11 +147,14 @@ Page({
     })
   },
   incomeFocus(e) {
+    let income = e.detail.detail.value
     if (e.detail.detail.value == "￥0.00" || e.detail.detail.value == "可以试试10+15+20哦") {
-      this.setData({
-        incomeMoney: ""
-      })
+      income = ""
     }
+    this.setData({
+      incomeMoney: income,
+      keyShow: !this.data.keyShow
+    })
   },
   incomeBlur(e) {
     let result = "";
@@ -175,26 +186,25 @@ Page({
       "saveData.money": result
     })
   },
-  //输入框内容改变，获取收入金额
-  expenditureMoneyInput(e) {
-    this.verifyMoneyInput(e.detail.detail.value, 'expenditure')
+
+  expenditureTap(e){
+    this.setData({
+      keyShow: !this.data.keyShow
+    })
   },
 
-  incomeMoneyInput(e) {
-    this.verifyMoneyInput(e.detail.detail.value, 'income')
-  },
   //验证金额输入值
   verifyMoneyInput(value, type) {
     //如果为空直接返回
-    if (!value) return
+    if (!value || typeof value == 'object') return
     try {
       const moneyCount = Number.parseFloat(value)
+      console.log(moneyCount)
       if (isNaN(moneyCount)) {
         msgTips('请输入正确的金额')
-        if (type == 'income') return this.setData({ incomeMoney: 0.00 })
-        this.setData({ expenditureMoney: 0.00 })
+        if (type == 'income') return this.setData({ incomeMoney: '' })
+        this.setData({ expenditureMoney: '' })
       }
-      this.setData({ 'saveData.money': moneyCount })
     } catch (e) { }
 
   },
@@ -214,7 +224,8 @@ Page({
   //选择类型名称
   setBackgroun(e) {
     this.setData({
-      isSele: e.target.dataset.id,
+      keyShow: false,
+      isSele: e.target.dataset.id || '',
       seleData: e.target.dataset,
       'saveData.iconData': e.target.dataset
     });
@@ -322,6 +333,26 @@ Page({
     })
   },
 
+  moneyChange(e) {
+    console.log(e.detail);
+    if (typeof e.detail == 'object') return
+    if (this.data.current === '0') {
+      this.setData({
+        expenditureMoney: e.detail
+      })
+    } else {
+      this.setData({
+        incomeMoney: e.detail
+      })
+    }
+    this.setData({ 'saveData.money': e.detail })
+  },
+
+  moneyConfirm(e){
+    const type = this.data.saveData.type == '0' ? 'expenditure' : 'income'
+    this.verifyMoneyInput(e.detail, type)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -405,7 +436,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '你还记得你的钱花哪去了吗，一起来累积生活点滴。',
+      title: '你还记得你的钱花哪去了吗，一起来累积生活的小点滴呀',
       path: 'pages/index/index?shareID=' + wx.getStorageSync('uopenid')
     }
   }

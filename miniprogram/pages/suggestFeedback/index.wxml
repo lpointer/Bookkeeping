@@ -23,9 +23,9 @@
         </view>
         <view class='shadow content'>
           <view class='title'>
-            <view>联系方式(选填)</view>
+            <view>联系方式(选填)，方便我联系你</view>
           </view>
-          <input bindblur='contactInfo' value='{{contactInfoVal}}' class='contact-info' placeholder='微信/手机号'></input>
+          <input bindblur='contactInfo' value='{{contactInfoVal}}' class='contact-info' placeholder='微信/QQ/手机号/邮箱'></input>
         </view>
         <view class='footer'>
           <button bindtap='add' class='footer-save' type="primary">

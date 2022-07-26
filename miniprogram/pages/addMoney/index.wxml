@@ -5,7 +5,11 @@
 <form bindsubmit='searchBox'>
   <view wx:if="{{ current == '0'}}">
     <i-panel title="输入金额">
-      <i-input bindfocus='expenditureFocus' bindblur='expenditureBlur' autofocus="{{expenditureAutoFocus}}" bind:change="expenditureMoneyInput" type="text" title="金额" value="{{expenditureMoney}}" />
+      <view class="i-cell i-input">
+        <view class="i-cell-hd i-input-title">金额</view>
+        <view class="i-input-input i-cell-bd" catchtap='expenditureTap'>{{expenditureMoney}}</view>
+      </view>
+      <!-- <i-input bindfocus='expenditureFocus' bindblur='expenditureBlur' autofocus="{{expenditureAutoFocus}}" bind:change="expenditureMoneyInput" type="text" title="金额" value="{{expenditureMoney}}" /> -->
     </i-panel>
     <i-grid wx:key="id" wx:for="{{expenditure}}" wx:for-index="id" wx:for-item="parentItem">
       <i-grid-item key="index" wx:for="{{parentItem.expenditureData}}" wx:key="index" class="{{isSele==item.id?'redbackgroun':'unredbackgroun'}} i-grid-item" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
@@ -20,7 +24,11 @@
   </view>
   <view wx:else>
     <i-panel title="输入金额">
-      <i-input bindfocus='incomeFocus' bindblur='incomeBlur' autofocus="{{incomeAutoFocus}}" bind:change="incomeMoneyInput" type="text" title="金额" value="{{incomeMoney}}" />
+      <view class="i-cell i-input">
+        <view class="i-cell-hd i-input-title">金额</view>
+        <view class="i-input-input i-cell-bd" catchtap='expenditureTap'>{{incomeMoney}}</view>
+      </view>
+      <!-- <i-input bindfocus='incomeFocus' bindblur='incomeBlur' autofocus="{{incomeAutoFocus}}" bind:change="incomeMoneyInput" type="text" title="金额" value="{{incomeMoney}}" /> -->
     </i-panel>
     <i-grid wx:key="id" wx:for="{{income}}" wx:for-index="id" wx:for-item="parentItem">
       <i-grid-item key="index" wx:for="{{parentItem.incomeData}}" wx:key="index" class="{{isSele==item.id?'redbackgroun':'unredbackgroun'}}" data-id="{{item.id}}" data-icon="{{item.icon}}" data-name="{{item.name}}" catchtap="setBackgroun">
@@ -47,4 +55,5 @@
       </button>
     </i-panel>
   </view>
+  <money-input content="{{expenditureMoney}}" keyShow="{{keyShow}}" KeyboardKeys="{{KeyboardKeys}}" bindchange="moneyChange" bindtap='moneyConfirm'></money-input>
 </form>

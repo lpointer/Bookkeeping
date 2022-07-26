@@ -1,0 +1,15 @@
+<view class='page_box'>
+    <view class='keyboard {{keyShow&&"hind_box"}}'>
+        <view class='key_box'>
+            <view class="number_box">
+                <view class='keys {{index==9?"zero":""}}' wx:for='{{KeyboardKeys}}' wx:key='this' catchtap='keyTap' data-keys='{{item}}'>{{item}}</view>
+            </view>
+            <view class="btn_box">
+                <view class='keys' catchtap='keyTap' data-keys='<'>
+                    <image mode="widthFix" src="../../images/delete_icon.png"></image>
+                </view>
+                <view class="keys pay_btn" catchtap='payTap'>确认</view>
+            </view>
+        </view>
+    </view>
+</view>

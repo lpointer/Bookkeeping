@@ -55,16 +55,20 @@ Page({
     if (moneyIncome.length || moneyConsumption.length) {
       let switchsShow = false
       if (todayDataList.length) switchsShow = true
+      const moneyConsumptionDetail = this.toDecimal(moneyConsumption.reduce(processData.consumptionDataCount, 0))
+      const todayConsumptionDetail = this.toDecimal(todayConsumption.reduce(processData.consumptionDataCount, 0))
+      const moneyIncomeDetail = this.toDecimal(moneyIncome.reduce(processData.incomeDataCount, 0))
+      const todayIncomeDetail = this.toDecimal(todayIncome.reduce(processData.incomeDataCount, 0))
       this.setData({
         todayData: todayDataList,
         'switchs.dataList': switchsShow,
         'money.show': true,
         //支出
-        'money.moneyConsumption': moneyConsumption.reduce(processData.consumptionDataCount, 0),
-        'money.todayConsumption': todayConsumption.reduce(processData.consumptionDataCount, 0),
+        'money.moneyConsumption': moneyConsumptionDetail,
+        'money.todayConsumption': todayConsumptionDetail,
         //收入
-        'money.moneyIncome': moneyIncome.reduce(processData.incomeDataCount, 0),
-        'money.todayIncome': todayIncome.reduce(processData.incomeDataCount, 0),
+        'money.moneyIncome': moneyIncomeDetail,
+        'money.todayIncome': todayIncomeDetail,
       })
     }
   },
@@ -208,21 +212,23 @@ Page({
   //获取本月总添加记录
   getAddTotal() {
     let openid = app.globalData.openid
-    if(!openid){
+    if (!openid) {
       openid = wx.getStorageSync('uopenid')
     }
+    console.log(openid);
+    console.log(_date.monthDate);
+    console.log(app.globalData.openid);
     wx.cloud.callFunction({
       name: 'getCount',
       data: {
         dbTable: dbTable.record,
         desc: 'cerateTime',
         condition: {
-          openid: app.globalData.openid,
+          openid: openid,
           month: _date.monthDate
         }
       }
     }).then((res) => {
-      console.log(res)
       var total = this.dedupe(res.result.data);
 
       this.setData({ addRecordTotal: total.length })
@@ -295,18 +301,30 @@ Page({
   //删除重新计算
   removeRecalculate(num, type) {
     if (type == '0') {
+      const moneyConsumption = this.toDecimal((this.data.money.moneyConsumption - 0) - (num - 0))
+      const todayConsumption = this.toDecimal((this.data.money.todayConsumption - 0) - (num - 0))
+
       this.setData({
         //支出
-        'money.moneyConsumption': (this.data.money.moneyConsumption - 0) - (num - 0),
-        'money.todayConsumption': (this.data.money.todayConsumption - 0) - (num - 0)
+        'money.moneyConsumption': moneyConsumption,
+        'money.todayConsumption': todayConsumption
       })
     } else {
+      const moneyIncome = this.toDecimal((this.data.money.moneyIncome - 0) - (num - 0))
+      const todayIncome = this.toDecimal((this.data.money.todayIncome - 0) - (num - 0))
       this.setData({
         //收入
-        'money.moneyIncome': (this.data.money.moneyIncome - 0) - (num - 0),
-        'money.todayIncome': (this.data.money.todayIncome - 0) - (num - 0)
+        'money.moneyIncome': moneyIncome,
+        'money.todayIncome': todayIncome
       })
     }
+  },
+  toDecimal(num) {
+    num = parseFloat(num)
+    if (num.toString().includes('.')) {
+      return num.toFixed('2')
+    }
+    return num
   },
   //关闭提示框
   ok() {

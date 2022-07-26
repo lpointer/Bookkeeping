@@ -462,7 +462,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '猪猪记，点点滴滴记录生活！',
+      title: '小点滴记账，快来记录生活的小点滴！',
       path: 'pages/index/index?shareID=' + wx.getStorageSync('uopenid')
     }
   },
