@@ -1,3 +1,4 @@
+const processData = require('../../utlis/ProcessingData')
 Component({
     externalClasses: ['i-class'],
     properties: {
@@ -13,19 +14,33 @@ Component({
             value: false,
             observer(val) {
                 this.keyShowChanger()   // 当visible变为true的时候 会触发initData
-             }
+            }
         }
     },
 
     methods: {
-        keyShowChanger(){
-            if(this.data.content){
+        keyShowChanger() {
+            try {
+                let count = ''
+                let splitValue = this.data.content.split("+");
+                if (splitValue.length > 1) {
+                    count = splitValue.reduce(processData.DataCount, 0)
+                } else {
+                    count = splitValue[0];
+                }
+                this.setData({
+                    content: count
+                })
+            } catch (err) {
+                console.log(err)
+            }
+            if (this.data.content) {
                 this.triggerEvent('change', this.data.content)
             }
         },
         keyTap(e) {
-            let { content } = this.data;
-            if(content.indexOf('￥') != -1){
+            let { content } = this.data
+            if (content.indexOf('￥') != -1) {
                 content = ''
             }
             var _this = this,

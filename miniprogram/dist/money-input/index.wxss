@@ -135,9 +135,13 @@ page {
     padding-top: 10rpx;
 }
 
+.btn_box .push{
+    padding-top: 0;
+}
+
 .btn_box .pay_btn{
-    height: 298rpx;
-    line-height: 298rpx;
+    height: 190rpx;
+    line-height: 190rpx;
     padding-top: 0;
     background: #05c160;
     font-size: 30rpx;

@@ -8,6 +8,7 @@
                 <view class='keys' catchtap='keyTap' data-keys='<'>
                     <image mode="widthFix" src="../../images/delete_icon.png"></image>
                 </view>
+                <view class="keys push" catchtap='keyTap' data-keys='+'>+</view>
                 <view class="keys pay_btn" catchtap='payTap'>确认</view>
             </view>
         </view>
