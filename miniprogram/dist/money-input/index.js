@@ -58,14 +58,10 @@ Component({
                     }
                     break;
                 case 0:
-                    console.log(content)
-                    if (len < 4) {
-                        console.log(content.length)
-                        if (content.length < 1) { //如果0是第一个输入，让其变成0.
-                            content = '0.';
-                        } else {
-                            content += '0'
-                        }
+                    if (content.length < 1) { //如果0是第一个输入，让其变成0.
+                        content = '0.';
+                    } else {
+                        content += '0'
                     }
                     break;
                 case '<': //如果点击删除键就删除字符串里的最后一个
@@ -73,8 +69,13 @@ Component({
                     break;
                 default:
                     let Index = content.indexOf('.'); //小数点在字符串中的位置
+                    let pushIndex = content.indexOf('+')
                     if (Index == -1 || len - Index != 3) { //这里控制小数点只保留两位
-                        if (len < 11) { //控制最多可输入10个字符串
+                        if (pushIndex == -1) {
+                            if (len < 11) { //控制最多可输入10个字符串
+                                content += keys;
+                            }
+                        } else {
                             content += keys;
                         }
                     }

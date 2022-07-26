@@ -65,7 +65,7 @@ Page({
         expenditureData: [
           { id: 27, icon: 'icon-yule', name: '娱乐活动' },
           { id: 26, icon: 'icon-dianying', name: '电影' },
-          {},
+          { id: 28, icon: 'icon-qita', name: '开盒' },
           {},
           {}
         ],
