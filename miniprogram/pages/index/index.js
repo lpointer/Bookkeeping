@@ -209,7 +209,7 @@ Page({
       openid = wx.getStorageSync('uopenid')
     }
     wx.cloud.callFunction({
-      name: 'getAddRecord',
+      name: 'getBillRecord',
       data: {
         dbTable: dbTable.record,
         desc: 'createTime',

@@ -21,8 +21,11 @@ Component({
     methods: {
         keyShowChanger() {
             try {
+                if(this.data.content.indexOf('可以') != -1) {
+                    return
+                }
                 let count = ''
-                let splitValue = this.data.content.split("+");
+                let splitValue = this.data.content.split("+")
                 if (splitValue.length > 1) {
                     count = splitValue.reduce(processData.DataCount, 0)
                 } else {
@@ -40,7 +43,7 @@ Component({
         },
         keyTap(e) {
             let { content } = this.data
-            if (content.indexOf('￥') != -1) {
+            if (content.indexOf('￥') != -1 || content.indexOf('可以') != -1) {
                 content = ''
             }
             var _this = this,
