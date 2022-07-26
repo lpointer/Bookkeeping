@@ -169,22 +169,7 @@ Page({
 
   onGetOpenid: function (type) {
     const that = this;
-    const uOpenid = wx.getStorageSync('uopenid');
-    //把openid缓存减少调用云函数
-    // if(uOpenid){
-    //   app.globalData.openid = uOpenid;
-    //   that.getIsUserSave(uOpenid)
-    //   that.getIsTodayAdd(uOpenid)
-    //   methods.getMonthDataList({ 
-
-    //     desc:'cerateTime',
-    //     condition: {
-    //       openid: uOpenid,
-    //       monthDate: _date.monthDate
-    //     }
-    //   }, that.detailData);
-    //   return
-    // }
+    const uOpenid = wx.getStorageSync('uopenid')
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
@@ -211,27 +196,36 @@ Page({
 
   //获取本月总添加记录
   getAddTotal() {
+    let json = wx.getStorageSync('totalJson')
+    if(json){
+      json = JSON.parse(json)
+      // 如果今天已经查询过了，则不在查询
+      if(_date.todayDate == json.date){
+        return
+      }
+    }
     let openid = app.globalData.openid
     if (!openid) {
       openid = wx.getStorageSync('uopenid')
     }
-    console.log(openid);
-    console.log(_date.monthDate);
-    console.log(app.globalData.openid);
     wx.cloud.callFunction({
-      name: 'getCount',
+      name: 'getAddRecord',
       data: {
         dbTable: dbTable.record,
-        desc: 'cerateTime',
+        desc: 'createTime',
         condition: {
-          openid: openid,
+          _openid: openid,
           month: _date.monthDate
         }
       }
     }).then((res) => {
-      var total = this.dedupe(res.result.data);
-
+      const total = this.dedupe(res.result.data)
       this.setData({ addRecordTotal: total.length })
+      const totalJson = {
+        date: _date.todayDate,
+        total: total.length
+      }
+      wx.setStorageSync('totalJson', JSON.stringify(totalJson))
     }).catch(e => { console.log(e) })
   },
 
