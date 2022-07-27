@@ -7,6 +7,28 @@ let _data = {
 
 module.exports = {
   _data,
+  getBillRecord(options){
+    wx.showLoading({ title: '正在加载' })
+    return new Promise((resolve, reject) => {
+      wx.cloud.callFunction({
+        name: 'getBillRecord',
+        data: {
+          dbTable: dbTable.cb,
+          desc: options.desc,
+          condition: options.condition
+        }
+      }).then(res => {
+        wx.hideLoading()
+        if (res.errMsg.includes('ok')) {
+          resolve(res.result.data)
+        }
+      }).catch(err => {
+        wx.hideLoading()
+        reject(err)
+        console.log(err)
+      })
+    })
+  },
   /**
    * 获取当月全部数据
    * options obj查询条件

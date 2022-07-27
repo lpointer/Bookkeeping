@@ -199,7 +199,6 @@ Page({
     if (!value || typeof value == 'object') return
     try {
       const moneyCount = Number.parseFloat(value)
-      console.log(moneyCount)
       if (isNaN(moneyCount)) {
         msgTips('请输入正确的金额')
         if (type == 'income') return this.setData({ incomeMoney: '' })
@@ -334,7 +333,6 @@ Page({
   },
 
   moneyChange(e) {
-    console.log(e.detail);
     if (typeof e.detail == 'object') return
     if (this.data.current === '0') {
       this.setData({

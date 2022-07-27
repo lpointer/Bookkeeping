@@ -24,10 +24,12 @@
     :canvas2d="true"
     type="line"
     opts="{{lineOpts}}"
+    bindgetIndex="getLineIndex"
     chartData="{{lineData}}"  />
   <qiun-wx-ucharts 
     :canvas2d="true"
     type="pie"
+    bindgetIndex="getPieIndex"
     opts="{{pieOpts}}"
     chartData="{{pieData}}"
   />

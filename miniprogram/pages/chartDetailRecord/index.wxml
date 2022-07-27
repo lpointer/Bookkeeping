@@ -1,0 +1,29 @@
+<view class='container' wx:if="{{notData}}">
+  <view class='top'>
+      <view class='tip'>
+        <label>合计：</label>
+        <label style="color:{{montyColor}}">￥{{moneyCount}}</label>
+      </view>
+  </view>
+  <view class='body'>
+    <view wx:for="{{dataList}}" wx:key="index">
+      <!-- <view class='tip' wx:if="{{item.monthDate != ''}}">{{item.monthDate}}</view> -->
+      <view wx:if="{{!item.isSameTime}}" class='tip'>{{item.date}}</view>
+      <i-swipeout data-id="{{item._id}}" data-index="{{index}}" data-money="{{item.money}}" data-type="{{item.type}}" data-menuid="{{item.iconData.id}}" toggle="{{toggle}}" i-class="i-swipeout-demo-item" bind:change="clickSwipeoutMenu" actions="{{actions}}" bind:long="handlerCloseButton">
+        <view slot="content">
+          <i-cell-group>
+            <i-cell label="{{item.remarks}}" title="{{item.iconData.name}}" fontColor="{{item.type}}" value="￥{{item.money}}">
+              <view slot="icon">
+                <image class='iconfont {{item.iconData.icon}} icon-default-size icon-default-color list_image'></image>
+              </view>
+            </i-cell>
+          </i-cell-group>
+        </view>
+      </i-swipeout>
+    </view>
+  </view>
+</view>
+<view wx:else style="text-align: center;margin-top:30%;">
+  <!-- <image src='../../images/home1.png'></image> -->
+  这里空空如也，你很勤俭哦，但也要记得犒劳一下自己哦。
+</view>

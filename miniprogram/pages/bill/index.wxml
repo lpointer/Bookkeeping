@@ -51,5 +51,5 @@
 </view>
 <view wx:else style="text-align: center;margin-top:30%;">
   <!-- <image src='../../images/home1.png'></image> -->
-  这里空空如也，你很勤俭哦，给你赞一个。
+  这里空空如也，你很勤俭哦，但也要记得犒劳一下自己哦。
 </view>

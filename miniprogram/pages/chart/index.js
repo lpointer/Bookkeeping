@@ -167,6 +167,22 @@ Page({
       path: 'pages/index/index?shareID=' + wx.getStorageSync('uopenid')
     }
   },
+  getLineIndex(e) {
+    const currentIndex = e.detail.currentIndex.index
+    const moneyCount = e.detail.opts.series[0].data[currentIndex]
+    const type = this.data.consumptionType === 'income' ? "1" : 0
+    const day = `${this.data.year}-${_date.addZero(this.data.month)}-${_date.addZero(currentIndex + 1)}` // 获取月数据
+    wx.navigateTo({ url: `../chartDetailRecord/index?day=${day}&name=${day}&moneyCount=${moneyCount}&type=${type}&chartType=line`})
+  },
+  getPieIndex(e) {
+    const currentIndex = e.detail.currentIndex
+    const typeName = e.detail.opts.series[currentIndex].name
+    const moneyCount = e.detail.opts.series[currentIndex].value
+    const color = e.detail.opts.color[currentIndex]
+    const type = this.data.consumptionType === 'income' ? "1" : 0
+    const month = `${this.data.year}-${_date.addZero(this.data.month)}` // 获取月数据
+    wx.navigateTo({ url: `../chartDetailRecord/index?month=${month}&name=${typeName}&moneyCount=${moneyCount}&type=${type}&chartType=pie&color=${color}`})
+  },
 
   //初始数据
   initData() {
@@ -175,10 +191,6 @@ Page({
     for (let i = date - 5; i <= date; i++) {
       this._data.yearDataArr.arr.push(i);
     }
-  },
-
-  pieTap(e){
-    console.log(e)
   },
 
   /*页面点击事件*/
@@ -283,7 +295,6 @@ Page({
     } else if (type == 'consumption') {
       options.condition.type = 0
     }
-    console.log(options)
     //options 查询条件  process 回调函数，接收查询成功的数据
     getList.getTodayDataList(options, this.process)
   },
@@ -472,7 +483,6 @@ Page({
     }
     const categorie = []
 
-    // console.log(lineMap)
     //把map转为数据，方便进行排序
     let arrayObj = Array.from(lineMap)
     // 根据key值排序
